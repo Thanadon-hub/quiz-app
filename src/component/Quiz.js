@@ -1,4 +1,4 @@
-import { useContext, useState,useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../App";
 import QuestionData from "../data/QuestionData";
 
@@ -6,16 +6,16 @@ const Quiz = () => {
     //console.log(QuestionData);
     const [current, setCurrent] = useState(0);
     const [selectChoice, setSelectChoice] = useState("");
-    const {score, setScore,setAppState} = useContext(DataContext);
+    const { score, setScore, setAppState } = useContext(DataContext);
     useEffect(() => {
         checkAnswer()
     }, [selectChoice])
 
     const checkAnswer = () => {
-        if(selectChoice !== "") {
-            if(selectChoice === QuestionData[current].answer) {
+        if (selectChoice !== "") {
+            if (selectChoice === QuestionData[current].answer) {
                 console.log("ตอบถูกนะคั้ฟ");
-                setScore(score+1)
+                setScore(score + 1)
                 nextQuestion()
             } else {
                 nextQuestion()
@@ -25,10 +25,10 @@ const Quiz = () => {
     }
     const nextQuestion = () => {
         setSelectChoice("")
-        if(current===QuestionData.length-1) {
+        if (current === QuestionData.length - 1) {
             setAppState("score")
-        }else{
-            setCurrent(current+1)
+        } else {
+            setCurrent(current + 1)
         }
     }
 
@@ -41,7 +41,7 @@ const Quiz = () => {
                 <button onClick={() => setSelectChoice("C")}>{QuestionData[current].C}</button>
                 <button onClick={() => setSelectChoice("D")}>{QuestionData[current].D}</button>
             </div>
-            <p>{`${current+1}/${QuestionData.length}`}</p>
+            <p>{`${current + 1}/${QuestionData.length}`}</p>
         </div>
     )
 }

@@ -25,7 +25,7 @@
   cursor: pointer;
   }
 button:active {
-  background: orange;
+  background: rgb(110, 235, 60);
   color: white;
 }
 .App-logo {
